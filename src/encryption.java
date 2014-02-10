@@ -20,12 +20,13 @@ public class encryption {
 	static String encryptionKey = "1234123412341234";
 
 	public static void main(String[] args) throws Exception {
-		if(readFromFile().length()==0){
+		String outputFromFile = readFromFile();
+		if(outputFromFile.length()==0){
 			System.out.println("You have no text");
 			writingToFile("EmptyFileException");
 		}
-		else if(readFromFile().length()!=0){
-			byte[] encryptedBytesFromFile = encrypt(readFromFile(), encryptionKey);
+		else if(outputFromFile.length()!=0){
+			byte[] encryptedBytesFromFile = encrypt(outputFromFile, encryptionKey);
 			encryptedString = Base64.encodeBase64String(encryptedBytesFromFile);
 			writingToFile(encryptedString);
 		}	
