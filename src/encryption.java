@@ -20,16 +20,19 @@ public class encryption {
 	static String encryptionKey = "1234123412341234";
 
 	public static void main(String[] args) throws Exception {
-
-		encryptedString = Base64.encodeBase64String((encrypt(readFromFile(), encryptionKey)));
-		writingToFile();
-
+		if(readFromFile().length()==0){
+			System.out.println("You have no text");
+			writingToFile("EmptyFileException");
+		}
+		else if(readFromFile().length()!=0){
+			byte[] encryptedBytesFromFile = encrypt(readFromFile(), encryptionKey);
+			encryptedString = Base64.encodeBase64String(encryptedBytesFromFile);
+			writingToFile(encryptedString);
+		}	
 	}
 	
-	private static void writingToFile() {
+	private static void writingToFile(String content) {
 		try {
-
-			String content = encryptedString;
 			File file = new File("C:/Users/Xelnect/Desktop/encrypted.txt");
 			// if file doesnt exists, then create it
 			if (!file.exists()) {
