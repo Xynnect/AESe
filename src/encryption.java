@@ -14,7 +14,7 @@ import org.apache.commons.codec.binary.Base64;
 public class encryption {
 	
 	private static String input;
-	private static String inputString;
+	private static String inputString = "";
 	private static String encryptedString;
 	static String IV = "AAAAAAAAAAAAAAAA";
 	static String encryptionKey = "1234123412341234";
@@ -56,7 +56,7 @@ public class encryption {
 			br = new BufferedReader(new FileReader(
 					"C:/Users/Xelnect/Desktop/messageToBeDecrypted.txt"));
 			while ((input = br.readLine()) != null) {
-				inputString = input;
+				inputString += input;
 				System.out.println(input);
 			}
 
